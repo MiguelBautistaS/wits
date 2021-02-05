@@ -80,7 +80,19 @@ INSERT INTO books(title, author_id, `year`)
 VALUES('Vuelta al Laberinto de la Soledad', 
       (SELECT author_id FROM authors WHERE name = 'Octavio Paz' LIMIT 1), 1960);
       
+ALTER TABLE  transactions 
+MODIFY COLUMN  `type` enum(
+'sell', 'lend', 'return') 
+NOT NULL AFTER client_id; 
       
+INSERT INTO transactions(transaction_id,book_id,client_id,`type`,`finished`) 
+VALUES(1,12,34,'sell',1),
+(2,54,87,'lend',0),
+(3,3,14,'sell',1),
+(4,1,54,'sell',1),
+(5,12,81,'lend',1),
+(6,12,81,'return',1),
+(7,87,29,'sell',1);    
       
       
       
@@ -117,3 +129,30 @@ SELECT * FROM clients WHERE name LIKE '%Saave%';
 -- Listar clientes (nombre, email, edad y género). con filtro de genero = F y nombre que coincida con 'Lop'
 --Usando alias para nombrar la función como 'edad'
 SELECT name, email, YEAR(NOW()) - YEAR(birthdate) AS edad, gender FROM clients WHERE gender = 'F' AND name LIKE '%Lop%';
+
+
+
+SELECT count(*) from books;
+SELECT count(*) from authors;
+SELECT * FROM authors WHERE author_id > 0 AND author_id <= 5;
+SELECT * FROM books WHERE author_id BETWEEN 1 AND 5;
+SELECT book_id, author_id, title FROM books WHERE author_id BETWEEN 1 AND 5;
+
+SELECT b.book_id, a.name, a.author_id, b.title
+FROM books as b 
+JOIN authors as a
+ON a.author_id = b.author_id
+where a.author_id BETWEEN 1 AND 5;
+
+SELECT * FROM transactions;
+
+SELECT c.name, b.title, a.name, t.type
+FROM transactions as t
+JOIN books as b
+ON t.book_id = b.book_id
+JOIN clients as c
+ON t.client_id = c.client_id
+JOIN authors as a
+ON b.author_id = a.author_id
+WHERE c.gender = 'M' 
+AND t.type IN ('sell', 'lend');
