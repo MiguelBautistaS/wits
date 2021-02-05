@@ -156,3 +156,23 @@ JOIN authors as a
 ON b.author_id = a.author_id
 WHERE c.gender = 'M' 
 AND t.type IN ('sell', 'lend');
+
+
+SELECT b.title, a.name
+FROM authors as a, books as b
+WHERE a.author_id = b.author_id
+LIMIT 10;
+
+SELECT a.author_id, a.name, a.nationality, b.title
+FROM authors as a
+JOIN books as b
+ON b.author_id = a.author_id
+WHERE a.author_id BETWEEN 1 AND 5
+ORDER BY a.name desc;
+
+SELECT a.author_id, a.name, a.nationality, b.title
+FROM authors as a
+LEFT JOIN books as b
+ON b.author_id = a.author_id
+WHERE a.author_id BETWEEN 1 AND 5
+ORDER BY a.author_id;
