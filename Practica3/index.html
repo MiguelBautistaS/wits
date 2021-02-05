@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practica 3</title>
+  <style>
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    th {
+      padding: 10px;
+    }
+    input {
+      width: 80%;
+    }
+    table {
+      table-layout: fixed;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="div-table-inputs">
+    <table id="table-inputs">
+      <tr>
+        <th>Input</th>
+        <th>Valor</th>
+        <th>Evento</th>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" id="button-input">
+        </td>
+        <td>
+          <p id="button-input-value"></p>
+        </td>
+        <td>
+          <p id="button-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="checkbox" id="checkbox-input">
+        </td>
+        <td>
+          <p id="checkbox-input-value"></p>
+        </td>
+        <td>
+          <p id="checkbox-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="color" id="color-input">
+        </td>
+        <td>
+          <p id="color-input-value"></p>
+        </td>
+        <td>
+          <p id="color-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="date" id="date-input">
+        </td>
+        <td>
+          <p id="date-input-value"></p>
+        </td>
+        <td>
+          <p id="date-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="datetime-local" id="datetime-local-input">
+        </td>
+        <td>
+          <p id="datetime-local-input-value"></p>
+        </td>
+        <td>
+          <p id="datetime-local-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="email" id="email-input">
+        </td>
+        <td>
+          <p id="email-input-value"></p>
+        </td>
+        <td>
+          <p id="email-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="file" id="file-input">
+        </td>
+        <td>
+          <p id="file-input-value"></p>
+        </td>
+        <td>
+          <p id="file-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="hidden" id="hidden-input">
+        </td>
+        <td>
+          <p id="hidden-input-value"></p>
+        </td>
+        <td>
+          <p id="hidden-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="image" id="image-input">
+        </td>
+        <td>
+          <p id="image-input-value"></p>
+        </td>
+        <td>
+          <p id="image-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="month" id="month-input">
+        </td>
+        <td>
+          <p id="month-input-value"></p>
+        </td>
+        <td>
+          <p id="month-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="number" id="number-input">
+        </td>
+        <td>
+          <p id="number-input-value"></p>
+        </td>
+        <td>
+          <p id="number-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="password" id="password-input">
+        </td>
+        <td>
+          <p id="password-input-value"></p>
+        </td>
+        <td>
+          <p id="password-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="radio" id="radio-input">
+        </td>
+        <td>
+          <p id="radio-input-value"></p>
+        </td>
+        <td>
+          <p id="radio-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="range" id="range-input">
+        </td>
+        <td>
+          <p id="range-input-value"></p>
+        </td>
+        <td>
+          <p id="range-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="reset" id="reset-input">
+        </td>
+        <td>
+          <p id="reset-input-value"></p>
+        </td>
+        <td>
+          <p id="reset-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="search" id="search-input">
+        </td>
+        <td>
+          <p id="search-input-value"></p>
+        </td>
+        <td>
+          <p id="search-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="submit" id="submit-input">
+        </td>
+        <td>
+          <p id="submit-input-value"></p>
+        </td>
+        <td>
+          <p id="submit-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="tel" id="tel-input">
+        </td>
+        <td>
+          <p id="tel-input-value"></p>
+        </td>
+        <td>
+          <p id="tel-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text" id="text-input">
+        </td>
+        <td>
+          <p id="text-input-value"></p>
+        </td>
+        <td>
+          <p id="text-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="time" id="time-input">
+        </td>
+        <td>
+          <p id="time-input-value"></p>
+        </td>
+        <td>
+          <p id="time-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="url" id="url-input">
+        </td>
+        <td>
+          <p id="url-input-value"></p>
+        </td>
+        <td>
+          <p id="url-input-event"></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="week" id="week-input">
+        </td>
+        <td>
+          <p id="week-input-value"></p>
+        </td>
+        <td>
+          <p id="week-input-event"></p>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>

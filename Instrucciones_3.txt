@@ -1,0 +1,11 @@
+<--- Práctica Inputs --->
+Crear un archivo html con una tabla que contiene las siguientes columnas:
+ -Primera columna: input
+ -Segunda columna: Valor de ese input
+ -Tercera columna: Último evento presentado en ese input
+
+-Utilizar todos los tipos de inputs disponibles en html
+-Crear ese mismo archivo html pero generado a partir de un JSON (Renderizar el contenido de ese JSON con código javascript)
+
+En la página principal se mostraran dos botones, uno que al presionarlo va a renderizar la tabla usando el archivo html
+y otro que al presionarlo va a renderizar la tabla usando el JSON
