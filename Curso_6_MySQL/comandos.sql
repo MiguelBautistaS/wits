@@ -55,3 +55,8 @@ CREATE TABLE IF NOT EXISTS operations(
 INSERT INTO authors(author_id, name, nationality) VALUES(NULL, 'Juan rulfo', 'MEX');
 INSERT INTO authors(name, nationality) VALUES('gabriel García Márquez', 'COL');
 INSERT INTO authors VALUES(NULL, 'Juan Gabriel Vasquez', 'COL');
+
+INSERT INTO authors(name, nationality) VALUES('Julio Cortázar', 'ARG'), 
+    ('Isabel Allende', 'CHI'), 
+    ('Octavio Paz', 'MEX'),
+    ('Juan Carlos Onetti', 'URY');
