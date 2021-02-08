@@ -186,10 +186,10 @@ GROUP BY a.author_id
 ORDER BY a.author_id;
 
 
-Qué nacionalidades hay?
+--Qué nacionalidades hay?
 SELECT DISTINCT nationality from authors ORDER BY nationality;
 
-Cuántos autores hay por cada nacionalidad?
+--Cuántos autores hay por cada nacionalidad?
 SELECT NATIONALITY, COUNT(author_id) AS c_authors
 FROM authors
 WHERE nationality IS NOT NULL
@@ -197,7 +197,7 @@ AND nationality IN('RUS', 'AUT')
 GROUP BY nationality
 ORDER BY c_authors DESC, nationality ASC;
 
-Cuál es el promedio/desvicación standar del precio de los libros?
+--Cuál es el promedio/desvicación standar del precio de los libros?
 SELECT nationality, COUNT(book_id) AS libros,
 AVG(price) AS promedio, STDDEV(price) AS std
 FROM books as b
@@ -206,14 +206,14 @@ ON a.author_id = b.author_id
 GROUP BY nationality
 ORDER BY libros DESC;
 
-Cuál es el precio máximo de un libro
+--Cuál es el precio máximo de un libro
 SELECT a.nationality, MAX(price), MIN(price)
 FROM books AS b
 JOIN authors AS a
 ON a.author_id = b.author_id
 GROUP BY nationality;
 
-Reporte final
+--Reporte final
 SELECT c.name, t.type, b.title, 
 CONCAT(a.name, " (", a.nationality, ")") AS autor,
 TO_DAYS(NOW()) - TO_DAYS(t.created_at) AS ago
@@ -224,3 +224,24 @@ LEFT JOIN books AS b
 ON b.book_id = t.book_id
 LEFT JOIN authors AS a
 ON b.author_id = a.author_id;
+
+
+--Borrar autor
+DELETE FROM authors WHERE author_id = 136 LIMIT 1;
+
+select client_id, name, active from clients where client_id in(80, 65, 76, 1, 61, 7, 19, 97);
+
+--Borrado lógico de cliente
+UPDATE clients 
+SET active = 0
+WHERE client_id = 80
+LIMIT 1;
+
+--Cambio de email a cliente
+UPDATE clients
+SET email = 'javier@gmail.com'
+WHERE client_id = 7
+LIMIT 1;
+
+--Sirve para borrar completamente la tabla
+truncate tabla;
