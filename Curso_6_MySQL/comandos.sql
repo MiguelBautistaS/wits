@@ -176,3 +176,51 @@ LEFT JOIN books as b
 ON b.author_id = a.author_id
 WHERE a.author_id BETWEEN 1 AND 5
 ORDER BY a.author_id;
+
+SELECT a.author_id, a.name, a.nationality, COUNT(b.book_id)
+FROM authors as a
+LEFT JOIN books as b
+ON b.author_id = a.author_id
+WHERE a.author_id BETWEEN 1 AND 5
+GROUP BY a.author_id
+ORDER BY a.author_id;
+
+
+Qué nacionalidades hay?
+SELECT DISTINCT nationality from authors ORDER BY nationality;
+
+Cuántos autores hay por cada nacionalidad?
+SELECT NATIONALITY, COUNT(author_id) AS c_authors
+FROM authors
+WHERE nationality IS NOT NULL
+AND nationality IN('RUS', 'AUT')
+GROUP BY nationality
+ORDER BY c_authors DESC, nationality ASC;
+
+Cuál es el promedio/desvicación standar del precio de los libros?
+SELECT nationality, COUNT(book_id) AS libros,
+AVG(price) AS promedio, STDDEV(price) AS std
+FROM books as b
+JOIN authors as a
+ON a.author_id = b.author_id
+GROUP BY nationality
+ORDER BY libros DESC;
+
+Cuál es el precio máximo de un libro
+SELECT a.nationality, MAX(price), MIN(price)
+FROM books AS b
+JOIN authors AS a
+ON a.author_id = b.author_id
+GROUP BY nationality;
+
+Reporte final
+SELECT c.name, t.type, b.title, 
+CONCAT(a.name, " (", a.nationality, ")") AS autor,
+TO_DAYS(NOW()) - TO_DAYS(t.created_at) AS ago
+FROM transactions AS t
+LEFT JOIN clients AS c
+ON c.client_id = t.client_id
+LEFT JOIN books AS b
+ON b.book_id = t.book_id
+LEFT JOIN authors AS a
+ON b.author_id = a.author_id;
