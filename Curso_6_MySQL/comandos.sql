@@ -245,3 +245,20 @@ LIMIT 1;
 
 --Sirve para borrar completamente la tabla
 truncate tabla;
+
+--Modificación de el código de nacionalidad
+UPDATE authors
+SET nationality = "GBR"
+WHERE nationality = "ENG";
+
+--Superquery
+SELECT nationality, COUNT(book_id), 
+SUM(IF(year < 1950, 1, 0)) AS "<1950",
+SUM(IF(year >= 1950 AND year < 1990, 1, 0)) AS "<1990",
+SUM(IF(year >= 1990 AND year < 2000, 1, 0)) AS "<2000",
+SUM(IF(year >= 2000, 1, 0 )) AS "hoy"
+FROM books AS b
+JOIN authors as a
+ON a.author_id = b.author_id
+WHERE nationality IS NOT NULL
+GROUP BY nationality;
